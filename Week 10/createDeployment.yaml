@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: mynode
+        image: australia-southeast1-docker.pkg.dev/sit323-24t1-mattea-67f9ccb/week-5-distinction-task/node-web-app:latest
+        ports:
+        - containerPort: 8080
